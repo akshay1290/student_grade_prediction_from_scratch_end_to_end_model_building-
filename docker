@@ -1,0 +1,20 @@
+# Specify a base image
+FROM python:3.8
+
+# Set the working directory
+WORKDIR /app4
+
+# Copy the requirements file into the container
+COPY requirements.txt .
+
+# Install the dependencies
+RUN pip install --no-cache-dir -r requirements.txt
+
+# Copy the app code into the container
+COPY app4.py .
+
+# Expose the default Streamlit port
+EXPOSE 8501
+
+# Start the app
+CMD ["streamlit", "run", "app4.py", "--server.port", "8501"]
